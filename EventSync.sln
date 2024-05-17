@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{2224BC9B-4F4D-4CF7-A04B-9FF6751B748D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSync", "libraries\EventSync\EventSync.csproj", "{13F3EFF0-420F-4216-A458-D7CFDC159CE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStack", "libraries\DataStack\DataStack.csproj", "{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13F3EFF0-420F-4216-A458-D7CFDC159CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F3EFF0-420F-4216-A458-D7CFDC159CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F3EFF0-420F-4216-A458-D7CFDC159CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F3EFF0-420F-4216-A458-D7CFDC159CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13F3EFF0-420F-4216-A458-D7CFDC159CE6} = {2224BC9B-4F4D-4CF7-A04B-9FF6751B748D}
+		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E} = {2224BC9B-4F4D-4CF7-A04B-9FF6751B748D}
+	EndGlobalSection
+EndGlobal
