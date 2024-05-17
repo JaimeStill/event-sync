@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace EventSync.Client;
-public class EventClientStartup<C>(IServiceProvider provider) : BackgroundService
+public class EventListenerConnector<C>(IServiceProvider provider) : BackgroundService
 where C : IEventClient
 {
     private readonly IServiceProvider provider = provider;

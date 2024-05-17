@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSync", "libraries\Even
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStack", "libraries\DataStack\DataStack.csproj", "{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5C88A8CC-E3ED-4423-879B-DCD8086F66E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatternMatchTypeString", "tests\PatternMatchTypeString\PatternMatchTypeString.csproj", "{89E2E57B-F174-48C4-AD27-17DD43B6F1D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +30,14 @@ Global
 		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E2E57B-F174-48C4-AD27-17DD43B6F1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E2E57B-F174-48C4-AD27-17DD43B6F1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E2E57B-F174-48C4-AD27-17DD43B6F1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E2E57B-F174-48C4-AD27-17DD43B6F1D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{13F3EFF0-420F-4216-A458-D7CFDC159CE6} = {2224BC9B-4F4D-4CF7-A04B-9FF6751B748D}
 		{B74B0413-2A9A-4FA5-87EE-5FA3EF3B859E} = {2224BC9B-4F4D-4CF7-A04B-9FF6751B748D}
+		{89E2E57B-F174-48C4-AD27-17DD43B6F1D0} = {5C88A8CC-E3ED-4423-879B-DCD8086F66E8}
 	EndGlobalSection
 EndGlobal
