@@ -1,5 +1,7 @@
 # Event Sync
 
+> Currently in development
+
 In previous projects where I've implemented SignalR-based event synchronization, the implementations ended up feeling cumbersome or were not the most performant. Causes for this were:
 
 * Targeting an event hub for every entity type in an API service, which lead to entirely too many open channels in any given context.
