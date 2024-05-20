@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using EventSync.Extensions;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;

@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventSync.Client;
-public class EventListener<EH> : EventClient, IEventListener
-where EH : IEventHandler
+public abstract class EventListener<ER> : EventClient, IEventListener
+where ER : IEventResolver
 {
     protected readonly IServiceProvider provider;
+    protected readonly IEventResolver resolver;
 
     public EventAction OnPing { get; protected set; }
     public EventAction OnSync { get; protected set; }
@@ -17,7 +18,7 @@ where EH : IEventHandler
     public EventListener(IServiceProvider provider, string endpoint) : base(endpoint)
     {
         this.provider = provider;
-
+        resolver = provider.GetRequiredService<ER>();
         Initialize();        
     }
 
@@ -27,11 +28,10 @@ where EH : IEventHandler
             await connection.InvokeAsync("Ping");
     }
 
-    protected Func<IEventMessage, Task> HandleEvent(Func<IEventMessage, EH, Task> action) =>
+    protected Func<IEventMessage, Task> HandleEvent(Func<IEventMessage, IEventHandler, Task> action) =>
         async (IEventMessage message) =>
         {
-            using IServiceScope scope = provider.CreateScope();
-            EH handler = scope.ServiceProvider.GetRequiredService<EH>();
+            IEventHandler handler = resolver.Resolve(message, provider);
             await action(message, handler);
         };
 
