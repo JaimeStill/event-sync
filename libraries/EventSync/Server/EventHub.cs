@@ -12,22 +12,24 @@ public class EventHub : Hub<IEventHub>, IEventHub
             .Ping();
     }
 
-    public async Task Sync(IEventMessage message) =>
+    public async Task Sync(EventMessage message)
+    {
         await Clients
             .All
             .Sync(message);
+    }
 
-    public async Task Add(IEventMessage message) =>
+    public async Task Add(EventMessage message) =>
         await Clients
             .All
             .Add(message);
     
-    public async Task Update(IEventMessage message) =>
+    public async Task Update(EventMessage message) =>
         await Clients
             .All
             .Update(message);
 
-    public async Task Remove(IEventMessage message) =>
+    public async Task Remove(EventMessage message) =>
         await Clients
             .All
             .Remove(message);

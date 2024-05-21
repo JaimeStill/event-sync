@@ -10,6 +10,7 @@ public abstract class EventClient : IEventClient
     protected readonly string endpoint;
 
     public EventClientStatus Status => new(connection.ConnectionId, connection.State);
+    public bool Connected => Status.State == HubConnectionState.Connected;
 
     protected abstract void DisposeEvents();
 

@@ -18,17 +18,18 @@ This project seeks to optimize and simplify distributed event syncing with Signa
 
 * Each API service will have only one [`EventHub`](./libraries/EventSync/Server/EventHub.cs) endpoint that handles all events for the service.
 
-* [`IEventMessage`](./libraries/EventSync/IEventMessage.cs) records will only capture the ID of the affected object, it's type, the concrete type of the `IEventMessage`, and an optional message communicating how the object was affected.
+* [`EventMessage`](./libraries/EventSync/EventMessage.cs) records will only capture the ID of the affected object, it's type, and an optional message communicating how the object was affected.
 
-* An [`IEventHandler`](./libraries/EventSync/Client/IEventHandler.cs) determines how to handle each event given type. A concrete instance will be defined for each concrete `IEventMessage` type emitted by an `EventHub` and registered as a singleton service.
+* An [`IEventHandler`](./libraries/EventSync/Client/IEventHandler.cs) determines how to handle each event given type. A concrete instance will be defined for each concrete `EventMessage` type emitted by an `EventHub` and registered as a singleton service.
 
-* An [`IEventResolver`](./libraries/EventSync/Client/IEventResolver.cs) will be defined for each `EventHub` that resolves the `IEventHandler` to use based on the received `IEventMessage`. A concrete instance will be defined for each `EventHub` and registered as a singleton service.
+* An [`IEventResolver`](./libraries/EventSync/Client/IEventResolver.cs) resolves the `IEventHandler` to use based on the received `EventMessage.Type`. A concrete instance of `IEventResolver` will be defined for each `EventHub` and registered as a singleton service.
 
     ```cs
-    public IEventHandler Resolve(IEventMessage message, IServiceProvider provider) => message switch
+    public IEventHandler Resolve(EventMessage message, IServiceProvider provider) => message.Type switch
     {
-        SpecificEventMessage _ => provider.GetRequiredService<SpecificEventHandler>(),
-        _ => throw new Exception("Unknown event message type")
+        "System.String" => provider.GetRequiredService<StringEventHandler>(),
+        "System.Int32" => provider.GetRequiredService<IntEventHandler>(),
+        _ => provider.GetRequiredService<BasicEventHandler>()
     }
     ```
 
@@ -36,6 +37,6 @@ This project seeks to optimize and simplify distributed event syncing with Signa
 
 * The connection to the remote `EventHub` will be managed through an [`EventListenerConnector`](./libraries/EventSync/Client/EventListenerConnector.cs). All `IEvent*` services for an `EventHub` must be registered before the `EventListenerConnector`.
 
-* Because `EventListener` has been simplified and standardized at the library level, the only event infrastructure you need to export are any custom `IEventMessage` implementations used by the `EventHub`. You just need to ensure the integrating service has CORS access to the target service, knows the `EventHub` endpoint, and has properly configured `IEventResolver` and `IEventHandler` instances to handle the events.
+* Because `EventListener` has been simplified and standardized at the library level, the only event infrastructure you need to export are any custom `EventMessage` implementations used by the `EventHub`. You just need to ensure the integrating service has CORS access to the target service, knows the `EventHub` endpoint, and has properly configured `IEventResolver` and `IEventHandler` instances to handle the events.
 
 * For web applications, only a single listener for each `EventHub` will be registered at the root of the application. The incoming events and messages will be distributed throughout the application using an RxJS observable. This observable can be filtered within any of its various subscription contexts so that the app optimizes how it handles event message flow.

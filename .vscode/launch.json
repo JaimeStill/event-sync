@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Proposal API",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "proposal-api-build",
+            "program": "bin/Debug/net8.0/Proposal.Api.dll",
+            "cwd": "${workspaceFolder}/servers/Proposal/Proposal.Api"
+        },
+        {
+            "name": "Workflow API",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "workflow-api-build",
+            "program": "bin/Debug/net8.0/Workflow.Api.dll",
+            "cwd": "${workspaceFolder}/servers/Workflow/Workflow.Api"
+        }
+    ]
+}

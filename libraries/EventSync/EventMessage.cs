@@ -1,8 +1,7 @@
 namespace EventSync;
-public record EventMessage<T> : IEventMessage
+public class EventMessage
 {
     public int Id { get; set; }
-    public string DataType { get; set; } = string.Empty;
-    public Type? ClrType => typeof(EventMessage<T>);
+    public string Type { get; set; } = string.Empty;
     public string? Message { get; set; }
 }

@@ -28,8 +28,8 @@ where ER : IEventResolver
             await connection.InvokeAsync("Ping");
     }
 
-    protected Func<IEventMessage, Task> HandleEvent(Func<IEventMessage, IEventHandler, Task> action) =>
-        async (IEventMessage message) =>
+    protected Func<EventMessage, Task> HandleEvent(Func<EventMessage, IEventHandler, Task> action) =>
+        async (EventMessage message) =>
         {
             IEventHandler handler = resolver.Resolve(message, provider);
             await action(message, handler);
@@ -50,11 +50,11 @@ where ER : IEventResolver
             await Connect();
         };
 
-        OnPing = new("ping", connection);
-        OnSync = new("sync", connection);
-        OnAdd = new("add", connection);
-        OnUpdate = new("update", connection);
-        OnRemove = new("remove", connection);
+        OnPing = new("Ping", connection);
+        OnSync = new("Sync", connection);
+        OnAdd = new("Add", connection);
+        OnUpdate = new("Update", connection);
+        OnRemove = new("Remove", connection);
 
         OnPing.Set(() => Console.WriteLine("Pong"));
 

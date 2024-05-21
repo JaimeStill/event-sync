@@ -2,9 +2,9 @@ namespace EventSync.Server;
 public interface IEventHub
 {
     Task Ping();
-    Task Sync(IEventMessage message);
+    Task Sync(EventMessage message);
 
-    Task Add(IEventMessage message);
-    Task Update(IEventMessage message);
-    Task Remove(IEventMessage message);
+    Task Add(EventMessage message);
+    Task Update(EventMessage message);
+    Task Remove(EventMessage message);
 }
